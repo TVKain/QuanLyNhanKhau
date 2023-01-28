@@ -1,4 +1,4 @@
-# QuanLyNhanKhau
+# Quản Lý Nhân Khẩu
 # Mục lục
 1. [Set up môi trường](#first)
 2. [Set up cơ sở dữ liệu](#second)
