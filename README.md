@@ -54,7 +54,7 @@ Cài đặt các công cụ cần thiết:
 ```
 git clone git@github.com:TVKain/QuanLyNhanKhau.git 
 ```
-- Import vào Eclipse (Chọn File => Open Projects from File System => Directory => Chọn Folder vừa clone về => Finish) 
+- Import vào Intellij (Chọn File => Open => Chọn Folder vừa clone về) 
 - Mở terminal tại project và tạo branch mới 
 ```
 git branch [tên branch]
