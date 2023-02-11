@@ -8,18 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NhanKhauDAO {
-    private Connection connection;
-
-    public NhanKhauDAO() {
-        this.connection = DatabaseConnection.getConnection();
-    }
-
     public boolean addNhanKhau(NhanKhau nhanKhau) {
         if (nhanKhau.getId() != null) {
             return false;
         }
 
         try {
+            Connection connection = DatabaseConnection.getConnection();
             PreparedStatement preparedStatement = connection
                     .prepareStatement(
                             "insert into nhan_khau(maNhanKhau, HoTen) " +
@@ -35,10 +30,9 @@ public class NhanKhauDAO {
             if (preparedStatement.executeUpdate() == 0) {
                 return false;
             }
-
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
 
         return true;
@@ -48,6 +42,7 @@ public class NhanKhauDAO {
         boolean success = true;
 
         try {
+            Connection connection = DatabaseConnection.getConnection();
             PreparedStatement preparedStatement = connection
                     .prepareStatement("delete from nhan_khau where id=?");
             // Parameters start with 1
@@ -56,7 +51,7 @@ public class NhanKhauDAO {
             if (preparedStatement.executeUpdate() == 0) {
                 success = false;
             }
-
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -68,6 +63,7 @@ public class NhanKhauDAO {
         ArrayList<NhanKhau> nhanKhaus = new ArrayList<>();
 
         try {
+            Connection connection = DatabaseConnection.getConnection();
             PreparedStatement statement = connection.prepareStatement(
                     "select * from nhan_khau"
             );
@@ -95,6 +91,7 @@ public class NhanKhauDAO {
 
                 nhanKhaus.add(nhanKhau);
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
